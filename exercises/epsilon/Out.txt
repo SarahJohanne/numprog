@@ -1,0 +1,12 @@
+My machine epsilon for double = 2.22044604925031E-16.
+	Expected it to be 2.22044604925031E-16.
+My machine epsilon for float = 1.192093E-07.
+	Expected it to be 1.19209289550781E-07.
+a = 1 and b=1
+a==b ? False
+a>1 ? False
+b>1 ? True
+d1=0.8=7.999999999999999e-001
+ d2=0.8=8.000000000000000e-001
+ d1==d2? =>False
+a==b w. approx func gives True
