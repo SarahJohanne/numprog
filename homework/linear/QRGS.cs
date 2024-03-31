@@ -27,8 +27,8 @@ public static class QRGS{
 			double sum=0;
 			for (int k=i+1; k<QTb.size ; k++){
 				sum+=R[i,k]*QTb[k];
-				QTb[i] = (QTb[i]-sum)/R[i,i]; 
 			}
+		QTb[i] = (QTb[i]-sum)/R[i,i]; 			
 		}
 		return QTb;	
 	}
