@@ -16,15 +16,11 @@ public static class QRGS{
 		}
 		return (Q,R);
 	}
-	/*
-	public static vector backsub(matrix A, vector b){
-		for int i = 
-	}*/
 	public static vector solve (matrix A, vector b){
 		(matrix Q, matrix R) = decomp(A);
 		vector QTb = Q.transpose()*b;
 		for (int i = QTb.size -1; i>=0; i--){
-			double sum=0;
+			double sum = 0;
 			for (int k=i+1; k<QTb.size ; k++){
 				sum+=R[i,k]*QTb[k];
 			}
@@ -32,4 +28,29 @@ public static class QRGS{
 		}
 		return QTb;	
 	}
-}
+	public static double det (matrix A){
+		if (A.size1 == A.size2){
+			matrix R = decomp(A).Item2;
+			double prod = 1;
+			for (int i=0; i<R.size1; i++){
+				prod*=R[i,i];
+			}
+			return prod;
+		}
+		System.Console.Write("$ Matrix is not m*m \n");
+		return 0;
+	}
+	public static matrix inverse (matrix Q, matrix R){
+		matrix B = R.copy();
+		vector b = new vector(R.size1);
+		for (int i=0; i<R.size1; i++){
+			b[i]=0;}
+		for (int j=0; j<R.size1; j++){
+			b[j] = 1;
+			B[j] = solve(Q*R, b);
+			b[j] = 0;
+		}
+		return B;
+	}	
+}/* end class*/
+

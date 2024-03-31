@@ -35,8 +35,25 @@ static class main{
 		WriteLine("x = [{0}]", string.Join(",", x));
 		double[] Ax = A2*x;
 		WriteLine("Ax = [{0}]", string.Join(",", Ax));
+		
+	
+		System.Console.Write($" testing inverse function: \n");
+		matrix A3 = new matrix(n);
+		for (int  i= 0; i < n ; i++){
+    			for (int j = 0; j < n ; j++){
+				A3[i,j] = random.NextDouble();}}
+		A3.print("A = ");
+		(matrix Q3, matrix R3) = QRGS.decomp(A3);
+		Q3.print("Q = ");
+		R3.print("R = ");
+		matrix B = QRGS.inverse(Q3, R3);
+		B.print("B = ");
+		matrix AB = A3*B;
+		AB.print("AB = ");
+
 		return 0;
-	}}
+	}
+}
 
 
 
