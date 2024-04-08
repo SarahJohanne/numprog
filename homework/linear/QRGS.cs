@@ -51,6 +51,11 @@ public static class QRGS{
 			b[j] = 0;
 		}
 		return B;
-	}	
+	}
+	public static matrix inverse (matrix A){
+		(matrix Q, matrix R) = decomp(A);
+		matrix B = inverse(Q,R);
+		return B;
+	}
 }/* end class*/
 
