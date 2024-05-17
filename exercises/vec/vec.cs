@@ -12,10 +12,9 @@ public class vec{
 	//operators:
 	public static vec operator*(vec v, double c){return new vec(c*v.x,c*v.y,c*v.z);}
 	public static vec operator*(double c, vec v){return v*c;}
-	public static vec operator+(vec u, vec v){/*...*/;}//Har åbenbart noget med add at gøre...
+	public static vec operator+(vec u, vec v){return new vec(u.x+v.x, u.y+v.y, u.z+v.z);}
 	public static vec operator-(vec u){return new vec(-u.x,-u.y,-u.z);}
-	public static vec operator-(vec u, vec v){/*...*/;} //Fatter ikke hvorfor den er anderledes end den med +. Er det fordi C# ved, at operator+ fx betyder at den skal adde tingene?
-	
+	public static vec operator-(vec u, vec v){return new vec(u.x-v.x, u.y-v.y, u.z-v.z);}	
 	//methods:
 	public void print(string s){Write(s);
 		WriteLine($"{x} {y} {z}");
@@ -23,7 +22,15 @@ public class vec{
 	public void print(){this.print("");
 	}
 	public double dot(vec other) => this.x*other.x+this.y*other.y+this.z*other.z; /* her kalder man den som u.dot(v)*/
-	public double dot(vec v, vec w) => v.x*w.x+v.y*w.y+v.z*w.z; /*Her kalder man den som vec.dot(u,v)*/
+	public static double dot(vec v, vec w){return v.x*w.x+v.y*w.y+v.z*w.z;} /*Her kalder man den som vec.dot(u,v)*/
+	public static double norm(vec u){
+		return Sqrt(Pow(u.x,2)+Pow(u.y,2)+Pow(u.z,2));}
+
+	public bool approx_d(double a,double b,double acc=1e-9,double eps=1e-9){
+		if(Abs(a-b)<acc)return true;
+		if(Abs(a-b)<(Abs(a)+Abs(b))*eps)return true;
+		return false;
+	}
 
 	static bool approx(double a, double b, double acc=1e-9, double eps=1e-9){
 		if(Abs(a-b)<acc) return true;
