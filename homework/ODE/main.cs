@@ -28,4 +28,19 @@ public static class main{
 		WriteLine($"\n");
 		for(int i = 0; i<ts.size; i++)Out.WriteLine($"{ts[i]} {thetas[i][0]} {thetas[i][1]}");
 
+// part b below
+		double epsi = 0;
+		vector init_i = new vector (1.0, 0.0);
+		Func<double, vector, vector> relfunc = delegate(double phi, vector yu){
+			vector dyu = new vector(2);
+			dyu[0] = yu[1];
+			dyu[1] = 1+epsi*yu[0]*yu[0]-yu[0];
+			return dyu;
+		};
+		double u0 = 1; double du0 = 0;
+		Func<double, vector> cirkelfunc = ODE.make_ode_ivp_interpolant(relfunc, (0,10), init_i);
+		Out.WriteLine($"\n");
+		for(double phi = 0; phi<1; phi+=1/10)Out.WriteLine($"{phi} {cirkelfunc(phi)[0]}");
+		
+
 }}

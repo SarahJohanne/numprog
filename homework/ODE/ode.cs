@@ -44,4 +44,27 @@ public static (genlist<double>, genlist<vector>) driver(
 		h *= Min( Pow(tol/err, 0.25)*0.95, 2);
 	}while(true);
 }
-}		
+public static int binsearch(double[] x, double z){
+		if( z<x[0] || z>x[x.Length-1] ) throw new Exception("binsearch: bad z");
+		int i=0, j=x.Length-1;
+		while(j-i>1){
+			int mid=(i+j)/2;
+			if(z>x[mid])i=mid;
+			else j=mid;
+		}
+		return i;
+	}
+public static Func<double, vector> make_linterp(genlist<double> x, genlist<vector> y){
+	Func<double, vector> interpolant = delegate(double z){
+		int i = binsearch(x,z);
+		double dx = x[i+1]-x[i];
+		vector dy = y[i+1]-y[i];
+		return y[i]+dy/dx*(z-x[i]);
+		};
+	return interpolant;
+}
+public static Func<double, vector> make_ode_ivp_interpolant(Func<double, vector, vector> f, (double, double) interval, vector y, double acc=0.01, double eps=0.01, double hstart=0.01){
+	var (xlist, ylist) = driver(f, interval, y, acc, eps, hstart);
+	return make_linterp(xlist, ylist);
+	}
+}
