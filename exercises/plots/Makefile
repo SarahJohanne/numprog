@@ -1,29 +1,31 @@
-CODE = $(filter %.cs, $^)
-LIBS = $(addprefix -reference:, $(filter %.dll,$^))
-MKEXE = mcs -target:exe -out:$@ $(LIBS) $(CODE)
-MKLIB = mcs -target:library -out:$@ $(LIBS) $(CODE)
+CSC=mcs
+RUN=mono
 
-Out.erf.gnuplot.svg : Out.txt Makefile
-	echo '\
-		set terminal svg background "white" ;\
-		set out "$@" ;\
-		set key left ;\
-		set xlabel "x" ;\
-		set ylabel "erf(x)" ;\
-		set tics out ;\
-		set grid ;\
-		set title "Error function" ;\
-		plot [-3:3]\
-	     		"$<" with lines notitle \
-			,"erf.data.txt" using 1:2 with points pointtype 6 notitle\
-			,"erf.data.txt" using (-($$1)):(-($$2)) with points pointtype 6 notitle ;\
-	' | tee log.gpi | gnuplot
+all:out.data.txt plots.svg 
 
-Out.txt: main.exe
-	mono $< >$@
+out.data.txt:main.exe
+	$(RUN) $< >$@
 
-sfuns.dll : sfuns.cs ; $(MKLIB)
-main.exe : main.cs sfuns.dll; $(MKEXE)
+main.exe:main.cs sfuns.dll
+	$(CSC) -reference:sfuns.dll $<
+
+sfuns.dll:sfuns.cs
+	$(CSC) -target:library -out:./$@ $^
+
+plots.svg:out.data.txt Makefile
+		echo '\
+		set term svg;\
+		set out "$@";\
+		set title "errorfunction, gammafunction and lngammafunction";\
+		set xlabel "x";\
+		set ylabel "y";\
+		set key left;\
+		plot []\
+		"$<" index 0 using 1:2 with lines title "error-function"\
+		,"$<" index 1 using 1:2 with lines title "gamma-function"\
+		,"$<" index 2 using 1:2 with lines title "lngamma-function"\
+		'|gnuplot
+
 
 clean:
-	$(RM) *.exe *.dll [Oo]ut* [Ll]og*
+	$(RM) *.exe *.dll *.txt *.svg
