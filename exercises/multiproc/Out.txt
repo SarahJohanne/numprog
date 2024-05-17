@@ -1,0 +1,20 @@
+Main:total= 19.6910435919144
+Main: Sum = 19.69104359191
+real 1.01
+user 4.98
+sys 0.03
+Main:total= 19.6910435919123
+Main: Sum = 19.6910435919206
+real 0.83
+user 6.07
+sys 0.04
+Main:total= 19.691043591912
+Main: Sum = 19.6910435919122
+real 3.10
+user 11.22
+sys 0.04
+Main:total= 19.691043591913
+Main: Sum = 19.6910435919108
+real 1.36
+user 7.47
+sys 0.02
