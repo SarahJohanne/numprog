@@ -1,0 +1,9 @@
+integrate from 0 to 1 Sqrt(x) = 0.666681 npoints=40
+cc-integrate from 0 to 1 Sqrt(x) = 0.666667 npoints=64
+integrate from 0 to 1 1/Sqrt(x) = 1.999997 npoints=17140
+cc-integrate from 0 to 1 1/Sqrt(x) = 2 npoints=52
+integrate from 0 to 1 4*Sqrt(1-x*x) = 3.1415975 npoints=80
+cc-integrate from 0 to 1 4*Sqrt(1-x*x) = 3.1415927 npoints=120
+integrate from 0 to 1 ln(x)/Sqrt(x) = -3.99999835 npoints=29972
+cc-integrate from 0 to 1 ln(x)/Sqrt(x) = -3.99999813 npoints=272
+cc-integration has fewer evaluations for integrals with integrable divergencies at the end of intervals.
