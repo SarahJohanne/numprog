@@ -99,8 +99,8 @@ Plot.mcqr.error.svg: Out.MCQR.txt Makefile
 	set ylabel "error";\
 	plot \
 	"$<" using 1:3 with lines title "Error found by different sequences"\
-	,"$<" using 1:4 with linespoints title "Actual error"\
-	,"$<" using 1:5 with linespoints title "Error-difference between QR and SR MC" \
+	,"$<" using 1:4 with lines title "Actual error"\
+	,"$<" using 1:5 with lines title "Error-difference between QR and SR MC" \
 	'| gnuplot
 
 Plot.mcqr.integral.svg: Out.MCQR.txt Makefile
@@ -112,6 +112,6 @@ Plot.mcqr.integral.svg: Out.MCQR.txt Makefile
 	set xlabel "N [#sampling points]";\
 	set ylabel "Integral value";\
 	plot \
-	"$<" using 1:2 with linespoints title "QR MC integration"\
+	"$<" using 1:2 with lines title "QR MC integration"\
 	,pi with lines title "Exact"\
 	'| gnuplot

@@ -1,13 +1,23 @@
 CSC = mcs
 RUN = mono
 
-all: Out.txt Plot.B1.svg Plot.Interpolations.svg Plot.Interpolations.test.svg
+all: Out.txt Outtimes.txt Plot.B1.svg Plot.Interpolations.svg Plot.Interpolations.test.svg
 
 Out.txt: main.exe
 	$(RUN) $< >$@
 
+Outtimes.txt: timing.exe
+	>$@
+	for N in $$(seq 100 50 10000); do \
+		time --format "$$N %e" --output $@ --append \
+		mono $< -size:$$N 1>out 2>err ;\
+		done
+
 main.exe: main.cs interps.dll
-	$(CSC) -reference:interps.dll $<
+	$(CSC) -target:exe -reference:interps.dll $<
+
+timing.exe: timing.cs interps.dll
+	$(CSC) -target:exe -reference:interps.dll $<
 
 interps.dll: ../Eksamen/interps.cs
 	$(CSC) -target:library -out:./$@ $<

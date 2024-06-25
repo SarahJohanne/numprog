@@ -1468,3 +1468,213 @@ Final set of parameters
 ======================= 
 
 a               = 1              
+
+
+*******************************************************************************
+Tue Jun 25 13:29:49 2024
+
+
+FIT:    data read from "Out.txt" index 1 using 1:2
+        format = x:z
+        #datapoints = 10
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(n)= a*cos(n)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a            
+   0 8.9132037826e-31   0.00e+00  7.28e-01    1.000000e+00
+   1 8.9132037826e-31   0.00e+00  7.28e-02    1.000000e+00
+
+After 1 iterations the fit converged.
+final sum of squares of residuals : 8.9132e-31
+abs. change during last iteration : 0
+
+
+Hmmmm.... Sum of squared residuals is zero. Can't compute errors.
+
+Final set of parameters 
+======================= 
+
+a               = 1              
+
+
+*******************************************************************************
+Tue Jun 25 13:31:25 2024
+
+
+FIT:    data read from "Out.txt" index 1 using 1:2
+        format = x:z
+        #datapoints = 10
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(n)= a*cos(n)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a            
+   0 8.9132037826e-31   0.00e+00  7.28e-01    1.000000e+00
+   1 8.9132037826e-31   0.00e+00  7.28e-02    1.000000e+00
+
+After 1 iterations the fit converged.
+final sum of squares of residuals : 8.9132e-31
+abs. change during last iteration : 0
+
+
+Hmmmm.... Sum of squared residuals is zero. Can't compute errors.
+
+Final set of parameters 
+======================= 
+
+a               = 1              
+
+
+*******************************************************************************
+Tue Jun 25 13:31:41 2024
+
+
+FIT:    data read from "Out.txt" index 1 using 1:2
+        format = x:z
+        #datapoints = 10
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(n)= a*cos(n)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a            
+   0 8.9132037826e-31   0.00e+00  7.28e-01    1.000000e+00
+   1 8.9132037826e-31   0.00e+00  7.28e-02    1.000000e+00
+
+After 1 iterations the fit converged.
+final sum of squares of residuals : 8.9132e-31
+abs. change during last iteration : 0
+
+
+Hmmmm.... Sum of squared residuals is zero. Can't compute errors.
+
+Final set of parameters 
+======================= 
+
+a               = 1              
+
+
+*******************************************************************************
+Tue Jun 25 13:34:14 2024
+
+
+FIT:    data read from "Out.txt" index 1 using 1:2
+        format = x:z
+        #datapoints = 10
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(n)= a*cos(n)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a            
+   0 8.9132037826e-31   0.00e+00  7.28e-01    1.000000e+00
+   1 8.9132037826e-31   0.00e+00  7.28e-02    1.000000e+00
+
+After 1 iterations the fit converged.
+final sum of squares of residuals : 8.9132e-31
+abs. change during last iteration : 0
+
+
+Hmmmm.... Sum of squared residuals is zero. Can't compute errors.
+
+Final set of parameters 
+======================= 
+
+a               = 1              
+
+
+*******************************************************************************
+Tue Jun 25 13:34:39 2024
+
+
+FIT:    data read from "Out.txt" index 1 using 1:2
+        format = x:z
+        #datapoints = 10
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(n)= a*cos(n)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a            
+   0 8.9132037826e-31   0.00e+00  7.28e-01    1.000000e+00
+   1 8.9132037826e-31   0.00e+00  7.28e-02    1.000000e+00
+
+After 1 iterations the fit converged.
+final sum of squares of residuals : 8.9132e-31
+abs. change during last iteration : 0
+
+
+Hmmmm.... Sum of squared residuals is zero. Can't compute errors.
+
+Final set of parameters 
+======================= 
+
+a               = 1              
+
+
+*******************************************************************************
+Tue Jun 25 13:34:53 2024
+
+
+FIT:    data read from "Out.txt" index 1 using 1:2
+        format = x:z
+        #datapoints = 10
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(n)= a*cos(n)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a            
+   0 8.9132037826e-31   0.00e+00  7.28e-01    1.000000e+00
+   1 8.9132037826e-31   0.00e+00  7.28e-02    1.000000e+00
+
+After 1 iterations the fit converged.
+final sum of squares of residuals : 8.9132e-31
+abs. change during last iteration : 0
+
+
+Hmmmm.... Sum of squared residuals is zero. Can't compute errors.
+
+Final set of parameters 
+======================= 
+
+a               = 1              
+
+
+*******************************************************************************
+Tue Jun 25 13:36:35 2024
+
+
+FIT:    data read from "Out.txt" index 1 using 1:2
+        format = x:z
+        #datapoints = 10
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(n)= a*cos(n)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a            
+   0 8.9132037826e-31   0.00e+00  7.28e-01    1.000000e+00
+   1 8.9132037826e-31   0.00e+00  7.28e-02    1.000000e+00
+
+After 1 iterations the fit converged.
+final sum of squares of residuals : 8.9132e-31
+abs. change during last iteration : 0
+
+
+Hmmmm.... Sum of squared residuals is zero. Can't compute errors.
+
+Final set of parameters 
+======================= 
+
+a               = 1              

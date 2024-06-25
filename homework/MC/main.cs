@@ -59,15 +59,16 @@ public class main
 		var x = new vector(dim);
 		for (int i = 0; i < N; i++)
 		{var halt = halton(i,dim);
-		var rnd = new Random();
-			for (int k = 0; k < dim; k++) x[k] = a[k] + rnd.NextDouble() * (b[k] - a[k]);
+		var corp = corput(i,19);
+		for (int k = 0; k < dim; k++) {x[k] = a[k] + halt[k] * (b[k] - a[k]);}
 			double fx = f(x);
 			sum += f(x);
-		for (int k = 0; k < dim; k++) {x[k] = a[k] + halt[k] * (b[k] - a[k]);}
-		sum2 += fx;
+		for (int k = 0; k< dim; k++) {x[k] = a[k] + corp*(b[k]-a[k]);}
+			sum2 += f(x);
 		}
-		double mean1 = sum / N, mean2 = sum2 / N, mean = (mean1 + mean2) / N, sigma = Abs(mean1 - mean2);
-		var result = (mean2 * V, sigma * V);
+		
+		double mean = sum / N, sigma = Abs(sum-sum2)/N;
+		var result = (mean * V, sigma*V);
 		return result;
 	}//Quasi-random Monte Carlo
 

@@ -22,7 +22,7 @@ clean:
 
 Plot.erf.svg: out.erf.data.txt Makefile
 	echo '\
-	set term svg;\
+	set term svg background "white";\
 	set out "$@";\
 	set title "erf(x) as integral representation";\
 	set key out;\
