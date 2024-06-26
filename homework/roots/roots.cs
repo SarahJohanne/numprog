@@ -7,23 +7,25 @@ using static QRGS;
 public static class Nroots{
 
 static public vector newton(Func<vector,vector>f, vector start, double acc=1e-2){
+	int steps=0;
+	int steps_max=10000;
 	vector x = start.copy();
 	vector fx=f(x), z, fz;
 	do{
+		steps+=1;
 		if(fx.norm() < acc) break;
 		matrix J = jacobian(f,x,fx);//bygges ud fra "opskrift" længere nede.
-		//var (Q,R) = matlib.decomp(J);//for at løse J*dx=-f(x)i
 		vector Dx = solve(J,-fx);
 		double lambda = 1;
 		do{
 			z = x+lambda*Dx;
 			fz = f(z);
 			if(fz.norm() < (1-lambda/2)*fx.norm())break;
-			if(lambda<1/64) break;
+			if(lambda<1/64.0) break;
 			lambda/=2;
 		}while(true);
 		x=z; fx=fz;
-	}while(true);
+	}while(true && steps<steps_max);
 return x;
 }//Newton
 
@@ -34,9 +36,10 @@ public static matrix jacobian (Func<vector, vector> f, vector x, vector fx=null,
 	for(int j=0; j<x.size; j++){
 	x[j]+=dx[j];
 	vector df=f(x)-fx;
-	for(int i=0; i<x.size;i++) J[i,j]=d[i]/dx[j];
+	for(int i=0; i<x.size;i++) J[i,j]=df[i]/dx[j];
 	x[j]-=dx[j];
 	}
 	return J;
 }//jacobian
 }
+

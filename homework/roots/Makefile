@@ -3,17 +3,13 @@ RUN = mono
 
 all: out.data.txt
 
-main.exe: main.cs rootlib.dll
-	$(CSC) -reference:rootlib.dll $<
+main.exe: main.cs matlib.dll
+	$(CSC) -target:exe -reference:matlib.dll $<
 
-matlib.dll: ../linear/QRGS.cs ../linear/matrix.cs ../linear/vector.cs
-	$(CSC) -target:library -out:./$@ $<
+matlib.dll: ../linear/QRGS.cs ../linear/matrix.cs ../linear/vector.cs roots.cs
+	$(CSC) -target:library -out:./$@ $^
 
-rootlib.dll: ../roots/roots.cs
-	$(CSC) -target:library -out:./$@ $<
 
-roots.exe: roots.cs matlib.dll
-	$(CSC) -reference matlib.dll $<
 
 out.data.txt: main.exe
 	$(RUN) $< >$@
