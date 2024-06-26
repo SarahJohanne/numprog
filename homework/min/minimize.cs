@@ -43,7 +43,7 @@ public static matrix hessian(Func<vector, double> phi, vector x){
     matrix H = new matrix(x.size);
     vector dphix = gradient(phi,x);
     for(int j = 0; j<x.size; j++){
-        double dx = Abs(x[j])*Pow(2,-13);
+        double dx = Abs(x[j])*Pow(2,-26);
         x[j] += dx;
         vector ddphi = gradient(phi,x)-dphix;
         for(int i=0; i<x.size;i++) H[i,j]=ddphi[i]/dx;
