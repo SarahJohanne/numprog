@@ -1,0 +1,7 @@
+A minimum has been found for Rosenbrock using 675 steps at x = 1.00000108574425, y = 1.00000214466184
+The value of function at minimum was: 1.2508138864476E-12
+
+
+
+A minimum has been found for Himmelblau using 115 steps at x = 2.99999997355546, y = 2.00000000993329
+The value of function at minimum was: 2.22983680795452E-14
