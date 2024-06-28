@@ -82,6 +82,18 @@ public static class main
             WriteLine($"{energy[i]} {BW(args)}");
         }   
 
+        //Part C:
 
+        vector start_C = new vector(10, 10);
+        var minima_R_C = minimize.newtonC(R, start_C);
+        var minima_H_C = minimize.newtonC(H, start_C);
+        WriteLine($"\nFor original Newton, minimum has been found for Rosenbrock using 303 steps at x = {minima_R[0]}, y = {minima_R[1]}");
+        WriteLine($"For new Newton, minimum has been found for Rosenbrock using {nR} steps at x = {minima_R_C[0]}, y = {minima_R_C[1]}");
+        WriteLine($"The value of function at minimum was in original: {R(minima_R)} and in new: {R(minima_R_C)}");
+        WriteLine($"\n");
+        WriteLine($"For original Newton, a minimum has been found for Himmelblau using 115 steps at x = {minima_H[0]}, y = {minima_H[1]}");
+        WriteLine($"A minimum has been found for Himmelblau using {nH} steps at x = {minima_H_C[0]}, y = {minima_H_C[1]}");
+        WriteLine($"he value of function at minimum was in original: {H(minima_H)} and in new: {H(minima_H_C)}");
+        
     }
 }

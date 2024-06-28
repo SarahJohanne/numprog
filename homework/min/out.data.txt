@@ -42,3 +42,12 @@ Theoretical mass of Higgs boson: m = 125.11 +- 0.11 GeV/c^2
 155 0.0117120727587945
 157 0.0102525066498491
 159 0.00904962192343013
+
+For original Newton, minimum has been found for Rosenbrock using 303 steps at x = 0.999995527117231, y = 0.999991046764671
+For new Newton, minimum has been found for Rosenbrock using 655 steps at x = 1.00000030631168, y = 1.00000062636383
+The value of function at minimum was in original: 2.00122899739646E-11 and in new: 1.12706622377256E-13
+
+
+For original Newton, a minimum has been found for Himmelblau using 115 steps at x = 2.99999988699122, y = 2.00000039653423
+A minimum has been found for Himmelblau using 273 steps at x = 2.99999995463663, y = 1.99999997264756
+he value of function at minimum was in original: 2.24935961662423E-12 and in new: 1.1367452897162E-13

@@ -24,23 +24,42 @@ public static class main{
 
 		var (xs, us) = ODE.driver(tfunc, ( x0,end),ystart);
 		var (ts,thetas) = ODE.driver(fricfunc, (x0,end), ystart); 
-		for(int i = 0; i<xs.size; i++)Out.WriteLine($"{xs[i]} {us[i][0]}");
+		for(int i = 0; i<xs.size; i++)WriteLine($"{xs[i]} {us[i][0]}");
 		WriteLine($"\n");
-		for(int i = 0; i<ts.size; i++)Out.WriteLine($"{ts[i]} {thetas[i][0]} {thetas[i][1]}");
+		for(int i = 0; i<ts.size; i++)WriteLine($"{ts[i]} {thetas[i][0]} {thetas[i][1]}");
 
 // part b below
-		double epsi = 0;
-		vector init_i = new vector (1.0, 0.0);
-		Func<double, vector, vector> relfunc = delegate(double phi, vector yu){
-			vector dyu = new vector(2);
-			dyu[0] = yu[1];
-			dyu[1] = 1+epsi*yu[0]*yu[0]-yu[0];
-			return dyu;
+		double eps_i = 0.0;
+		vector init_i = new vector (1, 0);
+		Func<double, vector, vector> Newtfunc = delegate(double phi, vector yu){
+			return new vector(yu[1],1+eps_i*yu[0]*yu[0]-yu[0]);
 		};
-		double u0 = 1; double du0 = 0;
-		Func<double, vector> cirkelfunc = ODE.make_ode_ivp_interpolant(relfunc, (0,10), init_i);
+		vector init_ii = new vector(1,-0.55);
+		double eps_iii = 0.01;
+		vector init_iii = new vector (1,-0.5);
+		Func<double, vector, vector> relfunc = delegate(double phi, vector yu){
+			return new vector(yu[1],1+eps_iii*yu[0]*yu[0]-yu[0]);
+		};
+
+		Func<double, vector> cirkelfunc = ODE.make_ode_ivp_interpolant(Newtfunc, (0,20), init_i);
+		Func<double, vector> elipsoidfunc = ODE.make_ode_ivp_interpolant(Newtfunc, (0,10), init_ii);
+		Func<double, vector> planetfunc = ODE.make_ode_ivp_interpolant(relfunc, (0,600), init_iii);
+		
 		Out.WriteLine($"\n");
-		for(double phi = 0; phi<1; phi+=1/10)Out.WriteLine($"{phi} {cirkelfunc(phi)[0]}");
+		for(double phi = 0.0; phi<20; phi+=1.0/8){
+			double u = cirkelfunc(phi)[0];
+			WriteLine($"{(1/u)*Cos(phi)} {(1/u)*Sin(phi)}");
+			}
+		Out.WriteLine($"\n");
+		for(double phi = 0.0; phi<10; phi+=1.0/8){
+			double u = elipsoidfunc(phi)[0];
+			WriteLine($"{(1/u)*Cos(phi)} {(1/u)*Sin(phi)}");
+			}
+		Out.WriteLine($"\n");
+		for(double phi = 0.0; phi<600; phi+=1.0/16){
+			double u = planetfunc(phi)[0];
+			WriteLine($"{(1/u)*Cos(phi)} {(1/u)*Sin(phi)}");
+			}
 		
 
 }}

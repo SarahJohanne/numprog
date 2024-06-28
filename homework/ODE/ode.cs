@@ -22,7 +22,7 @@ public static (genlist<double>, genlist<vector>) driver(
 		Func<double, vector, vector> F,
 		(double, double) interval,
 		vector ystart,
-		double h = 0.1,
+		double h = 0.125,
 		double acc = 0.01,
 		double eps = 0.01
 		)
