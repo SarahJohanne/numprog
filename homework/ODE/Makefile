@@ -44,8 +44,8 @@ cirkel.svg: out.data.txt Makefile
 		set terminal svg;\
 		set output "$@";\
 		set title "Newtonian circular motion";\
-		set xlabel "(1/u)*";\
-		set ylabel "u";\
+		set xlabel "(1/u)*cos(phi)";\
+		set ylabel "(1/u)*sin(phi)";\
 		set size square;\
 		set key right;\
 		plot "$<" index 2 using 1:2 with lines notitle;\
@@ -56,8 +56,8 @@ elipse.svg: out.data.txt Makefile
 		set terminal svg;\
 		set output "$@";\
 		set title "Newtonian elliptical motion";\
-		set xlabel "x";\
-		set ylabel "u";\
+		set xlabel "(1/u)*cos(phi)";\
+		set ylabel "(1/u)*sin(phi)";\
 		set size square;\
 		set xrange[-1.5:1.5];\
 		set yrange[-0.7:2.3];\
@@ -70,8 +70,8 @@ planet.svg: out.data.txt Makefile
 		set terminal svg;\
 		set output "$@";\
 		set title "Planetary orbit";\
-		set xlabel "x";\
-		set ylabel "u";\
+		set xlabel "(1/u)*cos(phi)";\
+		set ylabel "(1/u)*sin(phi)";\
 		set size square;\
 		set key right;\
 		plot "$<" index 4 using 1:2 with lines notitle;\

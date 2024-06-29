@@ -42,14 +42,14 @@ static class main{
         
 
         //Showing the Runge's phenomenon
-        double[] x_Runge = {-5,-4,-3.5,-3,-2.7,-2,-1,1,2,3,4,5,5.5};
+        double[] x_Runge = { -1.0, -0.8, -0.6, -0.4, -0.2, 0.0, 0.2, 0.4, 0.6, 0.8, 1.0};
         double[] y_Runge = new double[x_Runge.Length];
         for(int i = 0; i<x_Runge.Length; i++){
-            y_Runge[i] = 1/(Sqrt(2*PI*0.5))*Exp(-(x_Runge[i]*x_Runge[i])/(2*0.5)); //formula for propability density function
+            y_Runge[i] = 1/(1+25*x_Runge[i]*x_Runge[i]); //The Runge function
              }
         var Rungeinterp = new interpolation(x_Runge, y_Runge);
-        (double[] x_B1R, double[] y_B1R) = Rungeinterp.evaluate(111, interpStyle.B1interp);
-        (double[] x_pR, double[] y_pR) = Rungeinterp.evaluate(111, interpStyle.Pinterp);
+        (double[] x_B1R, double[] y_B1R) = Rungeinterp.evaluate(400, interpStyle.B1interp);
+        (double[] x_pR, double[] y_pR) = Rungeinterp.evaluate(400, interpStyle.Pinterp);
         WriteLine($"\n");
         for(int i=0; i<x_B1R.Length; i++){
             WriteLine($"{x_B1R[i]} {y_B1R[i]} {x_B1R.Length}"); }

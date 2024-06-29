@@ -1,14 +1,14 @@
 CSC = mcs
 RUN = mono
 
-all: Out.txt Outtimes.txt Plot.B1.svg Plot.Interpolations.svg Plot.Interpolations.test.svg
+all: Out.txt Plot.B1.svg Outtimes.txt Plot.times.svg Plot.Interpolations.svg Plot.Interpolations.test.svg
 
 Out.txt: main.exe
 	$(RUN) $< >$@
 
 Outtimes.txt: timing.exe
 	>$@
-	for N in $$(seq 100 50 10000); do \
+	for N in $$(seq 10000 10000 500000); do \
 		time --format "$$N %e" --output $@ --append \
 		mono $< -size:$$N 1>out 2>err ;\
 		done
@@ -66,4 +66,18 @@ Plot.Interpolations.svg: Out.txt Makefile
 	"$<" index 4 using 1:2 with lines title "B1"\
 	,"$<" index 5 using 1:2 with lines title "Polynomial"\
 	,"$<" index 6 using 1:2 with points title "tabulated points"\
+	'| gnuplot
+
+Plot.times.svg: Outtimes.txt Makefile
+	echo '\
+	set term svg background "white";\
+	set out "$@";\
+	set title "Berrut-1 calculation time as function of sample size";\
+	set tics out;\
+	set xlabel "N";\
+	set ylabel "Calculation time";\
+	a=0.0000006; b=0.05; f(x)= a*x + b;\
+	fit f(x) "$<" via a,b;\
+	plot "$<" with linespoints title "Running times"\
+	,f(x) with lines title sprintf("fit: (N*%.8f)+%.3f",a,b) \
 	'| gnuplot
