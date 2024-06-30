@@ -1,4 +1,5 @@
 using System;
+using static System.Console;
 static class main{
 static void Main(string[] args){
 	double dr = 0;
@@ -23,33 +24,7 @@ static void Main(string[] args){
 			System.Console.Error.Write($"wrong syntax \n");}}}
 	if (dr==0 || rmax==0){dr=0.3; rmax=10;}//System.Console.Error.Write($"values not assigned to rmax or dr \n");
 
-	/*
-	var random = new System.Random();
-	matrix A = new matrix(n);
-	matrix I = new matrix(n);
-	for (int i=0; i<A.size1; i++){
-		for (int j=0; j<A.size1; j++){
-			if(i<=j){A[i,j]=i*n-i*(i+1)/2+j;}
-			else{A[i,j]=j*n-j*(j+1)/2+i;}
-			I[i,j] = 0;
-			I[i,i] = 1;
-		}}
-	A.print("A = ");
-	I.print("I = ");
-	
-	(vector w, matrix V, matrix A_new) = jacobi.cyclic(A);
-	A_new.print("A' = D = ");
-	V.print("V = ");
-	matrix VT = V.transpose();
-	matrix VTAV = VT*A*V;
-	VTAV.print("V^T*A*V = ");
-	matrix VDVT = V*A_new*VT;
-	VDVT.print("V*D*V^T = ");
-	matrix VTV = VT*V;
-	VTV.print("V^T*V = ");
-	matrix VVT = V*VT;
-	VVT.print("V*V^T = ");
-	w.print("w = ");*/
+
 
 	int npoints = (int)(rmax/dr)-1;
 	vector r = new vector(npoints);
@@ -68,12 +43,12 @@ static void Main(string[] args){
 	//V.print("eigenvectorerne er: ");
 	switch (plot){
 		case "E0":
-			System.Console.Out.Write($"{rmax} {dr} {e[0]} {e[1]} {e[2]} {e[3]}\n");
+			WriteLine($"{rmax} {dr} {e[0]} {e[1]} {e[2]} {e[3]}");
 			break;
 		case "f0":
 			System.Func<double,double> f0 = z => 2*z*Math.Exp(-z);
-			for(int i=0; i<r.size; i++)System.Console.Out.Write($"{r[i]} {V[i,0]/Math.Sqrt(dr)} {f0(r[i])}\n");
-			System.Console.WriteLine("\n");
+			for(int i=0; i<r.size; i++)WriteLine($"{r[i]} {V[i,0]/Math.Sqrt(dr)} {f0(r[i])}");
+			WriteLine("\n");
 			break;
 	}
 }
