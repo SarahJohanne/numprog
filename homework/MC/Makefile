@@ -67,6 +67,7 @@ Plot.mc.error.svg: Out.MCplain.txt Makefile
 	set title "Integration error, using plain MC";\
 	set tics out;\
 	set xlabel "N [#sampling points]";\
+	set yrange [0:0.6];\
 	set ylabel "error";\
 	a=1; f(n)= a/sqrt(n);\
 	fit f(x) "$<" using 1:4 via a;\
