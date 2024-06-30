@@ -75,7 +75,7 @@ Theoretical mass of Higgs boson: m = 125.11 +- 0.11 GeV/c^2
 158 0.00962294515850824
 159 0.00904962192343013
 
------------------Part B-------------
+-----------------Part C-------------
 
 For original Newton, minimum has been found for Rosenbrock using 303 steps at x = 0.999995527117231, y = 0.999991046764671
 For new Newton, minimum has been found for Rosenbrock using 655 steps at x = 1.00000030631168, y = 1.00000062636383

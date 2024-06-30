@@ -89,7 +89,7 @@ public static class main
         vector start_C = new vector(10, 10);
         var minima_R_C = minimize.newtonC(R, start_C);
         var minima_H_C = minimize.newtonC(H, start_C);
-        WriteLine($"\n-----------------Part B-------------");
+        WriteLine($"\n-----------------Part C-------------");
         WriteLine($"\nFor original Newton, minimum has been found for Rosenbrock using 303 steps at x = {minima_R[0]}, y = {minima_R[1]}");
         WriteLine($"For new Newton, minimum has been found for Rosenbrock using {nR} steps at x = {minima_R_C[0]}, y = {minima_R_C[1]}");
         WriteLine($"The value of function at minimum was in original: {R(minima_R)} and in new: {R(minima_R_C)}");
