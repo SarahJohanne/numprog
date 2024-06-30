@@ -18,22 +18,21 @@ matlib.dll: \
 
 testplot.svg: out.data.txt Makefile
 	echo '\
-		set terminal svg;\
+		set terminal svg background "white";\
 		set output "$@";\
 		set title "Pendulum without friction";\
 		set xlabel "x";\
-		set ylabel "u";\
+		set ylabel "u(x)";\
 		set key right;\
-		plot "$<" index 0 using 1:2 with points pointtype 4 title "Pendulum";\
+		plot "$<" index 0 using 1:2 with points pointtype 4 title "ODE solution";\
 	' | gnuplot
 
 fricplot.svg: out.data.txt Makefile
 	echo '\
-		set terminal svg;\
+		set terminal svg background "white";\
 		set output "$@";\
 		set title "Pendulum with friction";\
 		set xlabel "t";\
-		set ylabel "theta";\
 		set key right;\
 		plot "$<" index 1 using 1:2 with lines title "theta(t)",\
 		     "$<" index 1 using 1:3 with lines title "omega(t)";\
@@ -41,7 +40,7 @@ fricplot.svg: out.data.txt Makefile
 
 cirkel.svg: out.data.txt Makefile
 	echo '\
-		set terminal svg;\
+		set terminal svg background "white";\
 		set output "$@";\
 		set title "Newtonian circular motion";\
 		set xlabel "(1/u)*cos(phi)";\
@@ -53,7 +52,7 @@ cirkel.svg: out.data.txt Makefile
 
 elipse.svg: out.data.txt Makefile
 	echo '\
-		set terminal svg;\
+		set terminal svg background "white";\
 		set output "$@";\
 		set title "Newtonian elliptical motion";\
 		set xlabel "(1/u)*cos(phi)";\
@@ -67,7 +66,7 @@ elipse.svg: out.data.txt Makefile
 
 planet.svg: out.data.txt Makefile
 	echo '\
-		set terminal svg;\
+		set terminal svg background "white";\
 		set output "$@";\
 		set title "Planetary orbit";\
 		set xlabel "(1/u)*cos(phi)";\
