@@ -35,9 +35,9 @@ Plot.Conv.rmin.svg: out.data.txt Makefile
 	set title "Convergence of solution with respect to rmin parameter";\
 	set tics out;\
 	set xrange [*:*] reverse;\
-	set xlabel "r_min";\
-	set ylabel "E0";\
-	plot "$<" index 3 using 1:2 with points title "Calculated E0"\
+	set xlabel "r_{min}";\
+	set ylabel "E_0";\
+	plot "$<" index 3 using 1:2 with points title "Calculated E_0"\
 	, -0.5 with lines title "Theoretical solution";\
 	'| gnuplot
 
@@ -47,9 +47,9 @@ Plot.Conv.rmax.svg: out.data.txt Makefile
 	set out "$@";\
 	set title "Convergence of solution with respect to rmax parameter";\
 	set tics out;\
-	set xlabel "r_max";\
-	set ylabel "E0";\
-	plot "$<" index 4 using 1:2 with points title "Calculated E0"\
+	set xlabel "r_{max}";\
+	set ylabel "E_0";\
+	plot "$<" index 4 using 1:2 with points title "Calculated E_0"\
 	, -0.5 with lines title "Theoretical solution";\
 	'| gnuplot
 
@@ -62,8 +62,8 @@ Plot.Conv.eps.svg: out.data.txt Makefile
 	set xrange [*:*] reverse;\
 	set yrange [-0.5115:-0.498];\
 	set xlabel "eps value";\
-	set ylabel "E0";\
-	plot "$<" index 5 using 1:2 with points title "Calculated E0"\
+	set ylabel "E_0";\
+	plot "$<" index 5 using 1:2 with points title "Calculated E_0"\
 	, -0.5 with lines title "Theoretical solution";\
 	'| gnuplot
 
@@ -76,7 +76,7 @@ Plot.Conv.acc.svg: out.data.txt Makefile
 	set xrange [*:*] reverse;\
 	set yrange [-0.5115:-0.498];\
 	set xlabel "acc value";\
-	set ylabel "E0";\
-	plot "$<" index 6 using 1:2 with points title "Calculated E0"\
+	set ylabel "E_0";\
+	plot "$<" index 6 using 1:2 with points title "Calculated E_0"\
 	, -0.5 with lines title "Theoretical solution";\
 	'| gnuplot
