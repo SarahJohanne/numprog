@@ -1,28 +1,15 @@
-```mermaid
-classDiagram
-    class Interpolator {
-        <<interface>>
-        +interpolate(x: double): double
-        +add_point(x: double, y: double): void
-    }
+# Exam Project
 
-    class CubicSpline {
-        +interpolate(x: double): double
-        +add_point(x: double, y: double): void
-    }
+## Part A:
+I implemented the Berrut B1 rational function interpolation algorithm, and tested it on tabulated points from y=cos(x). See *Plot.B1.a.svg*.
 
-    class Polynomial {
-        +interpolate(x: double): double
-        +add_point(x: double, y: double): void
-    }
+## Part B + C:
+I made an interpolation class containing B1 and polynomial interpolation algorithms. To show that the class did indeed work, I tested it on the same function as before, see *Plot.class.svg*. I then used the class to make interpolations for Runge's function, hence showing Runge's Phenomenon; The B1 interpolation results in a minimization of large oscillations at edges, contrary to polynomial. See *Plot.Runge.svg*. 
 
-    class Barycentric {
-        +interpolate(x: double): double
-        +add_point(x: double, y: double): void
-    }
+Furthermore, to confirm that the Berrut interpolants have *O(n)* opertations, i measured the time it takes to evaluate for a list of N points as a function of N.
+I then plottet the time as function of N in gnuplot and fit it with x*N, see *Plot.times.svg*.
 
-    Interpolator <|-- CubicSpline
-    Interpolator <|-- Polynomial
-    Interpolator <|-- Barycentric
-    ```
-    
+Total number of points: 8
+
+
+

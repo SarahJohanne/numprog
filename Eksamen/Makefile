@@ -1,7 +1,7 @@
 CSC = mcs
 RUN = mono
 
-all: Out.txt Plot.B1.svg Outtimes.txt Plot.times.svg Plot.Interpolations.svg Plot.Interpolations.test.svg
+all: Out.txt Plot.B1.a.svg Outtimes.txt Plot.times.svg Plot.Runge.svg Plot.class.svg
 
 Out.txt: main.exe
 	$(RUN) $< >$@
@@ -23,9 +23,9 @@ interps.dll: ../Eksamen/interps.cs
 	$(CSC) -target:library -out:./$@ $<
 
 clean:
-	rm -f *.dll *.exe *.txt *.svg
+	rm -f *.dll *.exe *.txt *.svg *log
 
-Plot.B1.svg: Out.txt Makefile
+Plot.B1.a.svg: Out.txt Makefile
 	echo '\
 	set term svg background "white";\
 	set out "$@";\
@@ -41,7 +41,7 @@ Plot.B1.svg: Out.txt Makefile
 	,"$<" index 1 using 1:2 with points title "tabulated points"\
 	'| gnuplot
 
-Plot.Interpolations.test.svg: Out.txt Makefile
+Plot.class.svg: Out.txt Makefile
 	echo '\
 	set term svg background "white";\
 	set out "$@";\
@@ -52,9 +52,10 @@ Plot.Interpolations.test.svg: Out.txt Makefile
 	plot \
 	"$<" index 2 using 1:2 with lines title "B1"\
 	,"$<" index 3 using 1:2 with lines title "Polynomial"\
+	,"$<" index 1 using 1:2 with points title "tabulated points"\
 	'| gnuplot
 
-Plot.Interpolations.svg: Out.txt Makefile
+Plot.Runge.svg: Out.txt Makefile
 	echo '\
 	set term svg background "white";\
 	set out "$@";\

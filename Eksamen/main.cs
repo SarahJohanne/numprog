@@ -4,9 +4,11 @@ using static System.Math;
 
 static class main{
     static void Main(){
-        double[] x_test = {0,1,2,3,4,5,6,7,8,9};
-        double[] y_test = new double[10];
+        int ns = 30;
+        double[] x_test = new double[ns];
+        double[] y_test = new double[ns];
         for(int i = 0; i<x_test.Length; i++){
+            x_test[i] = i/(2*PI);
             y_test[i] = Cos(x_test[i]); }
 
         //testing B1 interpolation
