@@ -1,5 +1,6 @@
 using static System.Math;
 public static class fit{
+	//fitting function has been modified to match with task B
 	public static (vector, matrix) lsfit (System.Func<double, double>[] fs, vector x, vector y, vector dy){
 		int n = x.size, m=fs.Length;
 		var A = new matrix (n,m);
