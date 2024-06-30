@@ -16,34 +16,36 @@ matlib.dll: \
 
 plot_lspline.svg: out.data.txt Makefile
 		echo '\
-		set term svg;\
+		set term svg background "white";\
 		set out "$@";\
 		set title "Spline";\
 		set xlabel "x";\
 		set ylabel "y";\
-		set key left;\
+		set key right;\
 		plot []\
-		"$<" index 0 using 1:2 with lines title "interpolated points"\
-		,"$<" index 0 using 1:3 with lines title "integrated, interpolated points"\
-		,"$<" index 1 using 1:2 with points pointtype 4 title "cos(x)"\
-		,"$<" index 1 using 1:3 with points pointtype 6 title "sin(x)"\
+		"$<" index 0 using 1:2 with points title "Tabulated points"\
+		,"$<" index 0 using 3:4 with points title "Tabulated points, for integration"\
+		,"$<" index 1 using 1:2 with lines title "Linear interpolation"\
+		,"$<" index 2 using 1:2 with lines title "Integrated, linear interpolation"\
+		#, cos(x) with lines title "cos(x)"\
+		#, sin(x) with 	lines title "sin(x)"\
 		'|gnuplot
 
 plot_qspline.svg: out.data.txt Makefile
 		echo '\
-		set term svg;\
+		set term svg background "white";\
 		set out "$@";\
 		set title "QSpline";\
 		set xlabel "x";\
 		set ylabel "y";\
 		set key left;\
 		plot []\
-		"$<" index 2 using 1:2 with lines title "interpolated points"\
-		,"$<" index 2 using 1:4 with lines title "integrated points"\
-		,"$<" index 2 using 1:3 with lines title "differentiated points"\
-		,"$<" index 1 using 1:2 with points pointtype 4 title "cos(x)"\
-		,"$<" index 1 using 1:3 with points pointtype 5 title "sin(x)"\
-		, "$<" index 1 using 1:4 with points pointtype 6 title "-sin(x)"\
+		"$<" index 3 using 1:2 with points title "Tabulated points"\
+		,"$<" index 3 using 1:3 with points title "Tabulated points, for derrivative"\
+		,"$<" index 3 using 1:4 with points title "Tabulated points, for anti-derrivative"\
+		,"$<" index 4 using 1:2 with lines title "Quadratic interpolation"\
+		,"$<" index 5 using 1:2 with lines title "Derivative, quadratic interpolation"\
+		,"$<" index 6 using 1:2 with lines title "Integrated, quadratic interpolation"\
 		'|gnuplot
 
 clean:

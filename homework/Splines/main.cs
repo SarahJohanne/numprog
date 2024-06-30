@@ -4,45 +4,56 @@ using System.Collections.Generic;
 using static System.Math;
 static class main{
 	static void Main(){
-		double[] x = {0,1,2,3,4,5,6,7,8,9};
-		double[] y = new double[10];
+		//part A
+		double[] x = new double[30];
+		double[] y = new double[30];
+		double[] ix = new double[30];
+		double[] iy = new double[30];
 		for(int i = 0; i<x.Length; i++){
+			x[i] = i/(2*PI);
 			y[i] = Cos(x[i]);
+			ix[i] = i/(2*PI);
+			iy[i] = Sin(x[i]);
+			WriteLine($"{x[i]} {y[i]} {ix[i]} {iy[i]}");
 		}
-		List<double> js = new List<double>();
-		List<double> s = new List<double>();
-		List<double> S = new List<double>();
-		for(double j=x[0]; j<x[9]; j+=1.0/32){
+		WriteLine("\n");
+
+		//linear spline
+		for(double j=x[0]; j<x[29]; j+=1.0/32){
 			double si = spline.linterp(x,y,j);
-			s.Add(si);
-			js.Add(j);
+			WriteLine($"{j} {si}");
+			}
+
+		//linear spline integral
+		WriteLine("\n");
+		for(double j=x[0]; j<x[29]; j+=1.0/32){
 			double s_integ = spline.linterpInte(x,y,j);
-			S.Add(s_integ);
-	}
-		double[] S_test = new double[js.Count];
-		double[] ds_test = new double[js.Count];
-		double m = 2.3;
-		var myqspline = new spline.qspline(x,y);
-		List<double> qs = new List<double>();
-		List<double> qds = new List<double>();
-		List<double> qis = new List<double>();
-		for(double j=x[0]; j<x[9]; j+=1.0/32){
-			double qsj = myqspline.evaluate(j);
-			double qdsj = myqspline.derivative(j);
-			double qisj = myqspline.integral(j);
-			qs.Add(qsj);
-			qds.Add(qdsj);
-			qis.Add(qisj);
+			WriteLine($"{j} {s_integ}");
+			}
+
+		// Part B below
+		WriteLine("\n");
+		for(int i = 0; i<ix.Length; i++){
+			WriteLine($"{ix[i]} {iy[i]} {y[i]} {1-y[i]}");
+			}//x, Sin(x), (d/dx)Sin(x)=Cos(x), Sin(x)dx[0,x] = 1-Cos(x) 
+
+		WriteLine($"\n");
+		var myqspline = new qspline(ix,iy);
+		for(double j = x[0]; j<x[29]; j+=1.0/32){
+			double fz = myqspline.evaluate(j);
+			WriteLine($"{j} {fz}");
 		}
-		for(int i=0; i<js.Count; i++){
-		WriteLine($"{js[i]} {s[i]} {S[i]}");}
 		WriteLine($"\n");
-		for(int i=0; i<x.Length; i++){
-		S_test[i] = Sin(x[i]);
-		ds_test[i] = -Sin(x[i]);
-		WriteLine($"{x[i]} {y[i]} {S_test[i]} {ds_test[i]}");}
+		for(double j = x[0]; j<x[29]; j+=1.0/32){
+			double dfz = myqspline.derivative(j);
+			WriteLine($"{j} {dfz}");
+		}
+
 		WriteLine($"\n");
-		for(int i=0; i<js.Count; i++)WriteLine($"{js[i]} {qs[i]} {qds[i]} {qis[i]}"); 
+		for(double j = x[0]; j<x[29]; j+=1.0/32){
+			double Fz = myqspline.integral(j);
+			WriteLine($"{j} {Fz}");
+		}
 }
 }
 
