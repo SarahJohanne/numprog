@@ -1,6 +1,6 @@
 using static System.Console;
 static class main{
-	static int Main(){
+	static void Main(){
 		var random = new System.Random(4);
 		int m = 3; int n=5;
 		matrix A = new matrix(n,m);
@@ -14,11 +14,11 @@ static class main{
 		matrix QT = Q.transpose();
 		matrix tproduct = QT*Q;
 		tproduct.print("QTQ =");
-			matrix qrproduct = Q*R;
+		matrix qrproduct = Q*R;
 		qrproduct.print("Q*R = ");
 
 
-		System.Console.Write($" testing solve function: \n");
+		WriteLine($" \n Testing solve function:");
 		matrix A2 = new matrix(n);
 		double[] b = new double[n];
 		for (int i=0; i<n; i++){
@@ -37,10 +37,10 @@ static class main{
 		WriteLine("Ax = [{0}]", string.Join(",", Ax));
 		
 	
-		System.Console.Write($" testing inverse function: \n");
+		WriteLine($" \n Testing inverse function:");
 		matrix A3 = new matrix(n);
 		for (int  i= 0; i < n ; i++){
-    			for (int j = 0; j < n ; j++){
+    		for (int j = 0; j < n ; j++){
 				A3[i,j] = random.NextDouble();}}
 		A3.print("A = ");
 		(matrix Q3, matrix R3) = QRGS.decomp(A3);
@@ -51,7 +51,7 @@ static class main{
 		matrix AB = A3*B;
 		AB.print("AB = ");
 
-		return 0;
+		WriteLine($" See Plot.times.svg for the operations count for QR decomposition");
 	}
 }
 

@@ -1,3 +1,5 @@
+using System;
+using static System.Console;
 using static System.Math;
 using static matrix;
 using static vector;
@@ -5,7 +7,9 @@ public static class QRGS{
 	public static (matrix, matrix) decomp(matrix A){
 		matrix Q = A.copy();
 		matrix R = new matrix(A.size2, A.size2);
+		int n = A.size1;
 		int m = A.size2;
+		if(m>n)throw new Exception("Wrong matrix size..");
 		for (int i=0; i<m; i++){
 			R[i,i] = Q[i].norm();
 			Q[i]/=R[i,i];
@@ -37,8 +41,7 @@ public static class QRGS{
 			}
 			return prod;
 		}
-		System.Console.Write("$ Matrix is not m*m \n");
-		return 0;
+		throw new Exception("$ Matrix is not m*m \n");
 	}
 	public static matrix inverse (matrix Q, matrix R){
 		matrix B = R.copy();
@@ -53,9 +56,13 @@ public static class QRGS{
 		return B;
 	}
 	public static matrix inverse (matrix A){
+		if (A.size1 == A.size2){
 		(matrix Q, matrix R) = decomp(A);
 		matrix B = inverse(Q,R);
 		return B;
-	}
+		}
+		throw new Exception("$ Matrix is not m*m \n");
+		
+		}
 }/* end class*/
 
