@@ -17,7 +17,7 @@ public static double integrate (Func<double, double> f, double a, double b, doub
 	if (err <= d+eps*Abs(Q)) return Q;
 	else return integrate(f,a, (a+b)/2, d/Sqrt(2), eps, f1, f2)+integrate(f,(a+b)/2, b, d/Sqrt(2), eps, f3, f4);
 }
-
+//part B below
 public static double ccintegrate (Func<double, double> f, double a, double b, double d=0.001, double eps=0.001){
 	Func<double, double> fcc = t=> f((a+b)/2+(b-a)/2*Cos(t))*Sin(t)*(b-a)/2;
 	return integrate(fcc,0,PI,d=d,eps=eps);

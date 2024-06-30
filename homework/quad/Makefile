@@ -18,7 +18,7 @@ matlib.dll: integrate.cs
 	$(CSC) -target:library -out:$@ $^
 
 clean:
-	rm -f *.dll *.exe
+	rm -f *.dll *.exe *.svg *.txt
 
 Plot.erf.svg: out.erf.data.txt Makefile
 	echo '\
@@ -31,6 +31,6 @@ Plot.erf.svg: out.erf.data.txt Makefile
 	set xlabel "x";\
 	plot [][-1.5:1.5]\
 	"$<" index 0 using 1:2 with line title "erf(x)" \
-	,"$<" index 1 using 1:2 with points pt 5 title "table" \
+	,"$<" index 1 using 1:2 with points title "tabulated points" \
 	'|gnuplot
 
