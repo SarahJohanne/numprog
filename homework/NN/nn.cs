@@ -115,10 +115,10 @@ public class ann
         }
 
         // Print optimized parameters
-        Error.WriteLine("Optimized parameters:");
-        p.print();
+        // Error.WriteLine("Optimized parameters:");
+        // p.print();
 
         // Final cost
-        Error.WriteLine($"Final cost: {costFunction(p, x, y, lambda)}");
+        // Error.WriteLine($"Final cost: {costFunction(p, x, y, lambda)}");
     }
 }
