@@ -49,7 +49,6 @@ public static matrix hessian(Func<vector, double> phi, vector x){
         for(int i=0; i<x.size;i++) H[i,j]=ddphi[i]/dx;
         x[j]-=dx;
     }
-//return H;
 return (H+H.T)/2;
 }
 // for part C:
@@ -78,7 +77,6 @@ public static matrix hessianC(Func<vector, double> phi, vector x){
         vector ddphi = (dphi_plus - dphi_minus)/(2*dx);
         for(int i=0; i<x.size;i++) H[i,j]=ddphi[i];// /dx;
     }
-//return H;
 return (H+H.T)/2;
 }
 public static vector newtonC( Func<vector, double> phi, vector start, double acc=1e-3){

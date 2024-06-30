@@ -23,13 +23,15 @@ public static class main
         vector start = new vector(10, 10);
         var minima_R = minimize.newton(R, start);
         var minima_H = minimize.newton(H, start);
+        WriteLine($"-----------------Part A-------------");
         WriteLine($"A minimum has been found for Rosenbrock using {nR} steps at x = {minima_R[0]}, y = {minima_R[1]}");
         WriteLine($"The value of function at minimum was: {R(minima_R)}");
         WriteLine($"\n\n");
         WriteLine($"A minimum has been found for Himmelblau using {nH} steps at x = {minima_H[0]}, y = {minima_H[1]}");
         WriteLine($"The value of function at minimum was: {H(minima_H)}");
-
+        
         //Task B
+        WriteLine($"-----------------Part B-------------");
         var energy = new genlist<double>();
         var signal = new genlist<double>();
         var error = new genlist<double>();
@@ -77,9 +79,9 @@ public static class main
         WriteLine($"Theoretical mass of Higgs boson: m = 125.11 +- 0.11 GeV/c^2");
         WriteLine($" number of calls = {n++}\n\n");
 
-        for(int i = 0; i <energy.size; i++){
-            vector args = new vector(fits[0], fits[1], fits[2], energy[i]);
-            WriteLine($"{energy[i]} {BW(args)}");
+        for(int i = 100; i <=energy[energy.size-1]; i++){
+            vector args = new vector(fits[0], fits[1], fits[2],i);
+            WriteLine($"{i} {BW(args)}");
         }   
 
         //Part C:
@@ -87,6 +89,7 @@ public static class main
         vector start_C = new vector(10, 10);
         var minima_R_C = minimize.newtonC(R, start_C);
         var minima_H_C = minimize.newtonC(H, start_C);
+        WriteLine($"\n-----------------Part B-------------");
         WriteLine($"\nFor original Newton, minimum has been found for Rosenbrock using 303 steps at x = {minima_R[0]}, y = {minima_R[1]}");
         WriteLine($"For new Newton, minimum has been found for Rosenbrock using {nR} steps at x = {minima_R_C[0]}, y = {minima_R_C[1]}");
         WriteLine($"The value of function at minimum was in original: {R(minima_R)} and in new: {R(minima_R_C)}");
