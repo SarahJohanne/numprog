@@ -25,7 +25,8 @@ static class main
         {
             // One-Dimensional Equation
             Func<vector, vector> f1 = x => new vector(2 * x[0] + 3);
-            vector guess1 = new vector(-3);
+            vector guess1 = new vector(1);
+            guess1[0] = -3;
             vector root1 = Nroots.Newton(f1, guess1);
             WriteLine($"Root to f = 2*x + 3 is found as x={root1[0]}");
 

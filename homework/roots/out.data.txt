@@ -1,4 +1,5 @@
-Overflow exception: Arithmetic operation resulted in an overflow.
+Root to f = 2*x + 3 is found as x=-1.5
+Root to f = y*x+3 and f = 2*y-4 is found as x=-1.5, y=2
 Extremum for Rosenbrock's valley is found at x=1.0 y=1.0 with f = 0.000
 Theoretically, the value should be x=1 y=1, f(x,y)=0
 One of the minimums for Himmelblau's function is found at x=-3.779310 y=-3.283186 with f = 0.0
